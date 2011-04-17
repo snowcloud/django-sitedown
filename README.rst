@@ -18,6 +18,7 @@ Add this to MIDDLEWARE_CLASSES:
 Set SITEDOWN_TEMPLATE, default is 'sitedown/default.html'.
 Set SITEDOWN_DISABLE to True to disable, default is False.
 Set SITEDOWN_USE_302 to True to return HTTP code 302, default is False.
+Set SITEDOWN_FLATPAGE to the URL of a Flatpage to include that in the template as {{title}} and {{message}}.
 
 Default is to return a 503 Service Unavailable
 

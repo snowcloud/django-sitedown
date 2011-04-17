@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Site is off-line{% endblock %}
+{% block title %}{{title|default:"Site is off-line"}}{% endblock %}
 
 {% block content %}
 
+{% if message %}
+
+{{ message|safe }}
+
+{% else %}
 <h1>This site is off-line for maintenance.</h1>
 
 <p>Please try again later.</p>
 
+{% endif %}
 
 {% endblock %}
