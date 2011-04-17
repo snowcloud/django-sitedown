@@ -12,5 +12,5 @@ Add 'sitedown' to INSTALLED_APPS
 Add this to MIDDLEWARE_CLASSES:
 "sitedown.middleware.SitedownMiddleware",
 
-Set SITEDOWN_TEMPLATE, default is 'sitedown/default.html'
-
+Set SITEDOWN_TEMPLATE, default is 'sitedown/default.html'.
+Set SITEDOWN_DISABLE to True to disable, default is False.

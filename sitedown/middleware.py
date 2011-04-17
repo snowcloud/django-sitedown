@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.contrib.auth.views import login
 from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 class SitedownMiddleware(object):
     """
@@ -9,25 +11,13 @@ class SitedownMiddleware(object):
     
     """
     def __init__(self):
-        self.template_path = getattr(settings, 'SITEDOWN_TEMPLATE', '/sitedown/default.html' )
+        self.template = getattr(settings, 'SITEDOWN_TEMPLATE', 'sitedown/default.html' )
     
     def process_request(self, request):
-        if getattr(settings, 'DISABLE_SITEDOWN', False):
+        if getattr(settings, 'SITEDOWN_DISABLE', False):
             return None
         if request.path.startswith('/admin'):
             return None
-            # if request.POST:
-            #     return login(request)
-            # else:
-            #     return HttpResponseRedirect('%s?next=%s' % (self.require_login_path, request.path))
-        return None
+        return render_to_response(self.template,
+            RequestContext( request, {}))
         
-    # def allowed_path(self, requested_path):
-    #     for p in settings.AUTH_ALLOWED_PATHS:
-    #         if requested_path.startswith(p):
-    #             print p
-    #             return True
-    #     path = requested_path.split('/')[1]
-    #     if path in settings.AUTH_ALLOWED_PATHS:
-    #         return True
-    #     return requested_path == self.require_login_path
