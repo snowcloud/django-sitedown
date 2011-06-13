@@ -2,6 +2,14 @@
  Django Sitedown
 ================
 
+**UPDATE** You probably want http://code.google.com/p/django-maintenancemode/
+
+Of course I searched for something like this before I wrote some code, but only found django-maintenancemode once I'd done it.
+
+Or use a redirect on your web server like this (Nginx example) http://stackoverflow.com/questions/5031818/show-a-custom-503-page-if-upstream-is-down
+
+
+
 Django-Sitedown is a simple app to effectively take a site off-line. Any URL except /admin will be redirected to a holding page.
 
 This is just a convenience thing for when you're making changes and just want to switch off a Django project for a short while. You are probably better off doing this via a redirect in your web server to a 503 Service Unavailable. 
