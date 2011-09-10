@@ -28,7 +28,7 @@ class SitedownMiddleware(object):
         if  self.disabled or \
             request.path.startswith('/admin') or \
             request.path.startswith(urlparse.urlparse(settings.MEDIA_URL).path) or \
-            (self.static_url and request.path.startswith(urlparse.urlparse(settings.STATIC_URL))):
+            (self.static_url and request.path.startswith(urlparse.urlparse(settings.STATIC_URL).path)):
             return None
         if request.path == self.redirect:
             return render_to_response(self.template,
